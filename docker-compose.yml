@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  basic:
+    build: ./basic
+
+  ingredient:
+    build: ./microservices/ingredients
+
+  order:
+    build: ./microservices/orders
+
+  nginx:
+    image: nginx:latest
+    ports:
+        - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - basic
+      - ingredient
+      - order
