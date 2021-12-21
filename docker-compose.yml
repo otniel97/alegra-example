@@ -3,12 +3,18 @@ version: "3"
 services:
   basic:
     build: ./basic
+    environment:
+      - PORT=3000
 
   ingredient:
     build: ./microservices/ingredients
+    environment:
+      - PORT=3000
 
   order:
     build: ./microservices/orders
+    environment:
+      - PORT=3000
 
   nginx:
     image: nginx:latest
